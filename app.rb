@@ -23,9 +23,10 @@ post '/visit' do
 	@user = params[:username]
 	@datetime = params[:dt]
 	@phone = params[:phone]
+	@barber = params[:barber]
 	
 	f = File.open "./public/users.txt", 'a'
-	f.write "User - #{@user}, datetime - #{@datetime}, phone - #{@phone}"
+	f.write "User - #{@user}, datetime - #{@datetime}, phone - #{@phone}, barber #{@barber}"
 	f.close
 
 	@title = "Dear #{@user}! Come at #{@datetime}"
