@@ -18,3 +18,17 @@ end
 get '/visit' do
 	erb :visit
 end
+
+post '/visit' do
+	@user = params[:username]
+	@datetime = params[:dt]
+	@phone = params[:phone]
+	
+	f = File.open "./public/users.txt", 'a'
+	f.write "User - #{@user}, datetime - #{@datetime}, phone - #{@phone}"
+	f.close
+
+	@title = "Dear #{@user}! Come at #{@datetime}"
+
+	erb :message
+end
